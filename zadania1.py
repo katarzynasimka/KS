@@ -7,6 +7,7 @@ Original file is located at
     https://colab.research.google.com/drive/1lOfQsOPD082rX2KPgKvB-2EKxLFK0EpK
 """
 
+
 def wyswietl_imiona(imiona):
     if len(imiona) == 5:
         for imie in imiona:
@@ -14,11 +15,11 @@ def wyswietl_imiona(imiona):
     else:
         print("Podano niepoprawną liczbę imion. Proszę podać 5 imion.")
 
+
 lista_imion = ["Jakub", "Ola", "Darek", "Łukasz", "Ewa"]
 wyswietl_imiona(lista_imion)
 
 
-# Wersja 1
 def pomnoz_elementy(lista):
     wynik = []
     for liczba in lista:
@@ -31,18 +32,21 @@ wynik = pomnoz_elementy(lista)
 print(wynik)
 
 
-# Wersja 2
 def pomnoz_elementy(lista):
     return [liczba * 2 for liczba in lista]
 
+
 lista = [1, 2, 3, 4, 5]
 wynik = pomnoz_elementy(lista)
+
 print(wynik)
+
 
 def wyswietl_parzyste_elementy(lista):
     for liczba in lista:
         if liczba % 2 == 0:
             print(liczba)
+
 
 lista = list(range(1, 11))
 wyswietl_parzyste_elementy(lista)
@@ -51,6 +55,7 @@ wyswietl_parzyste_elementy(lista)
 def wyswietl_co_drugi_element(lista):
     for i in range(0, len(lista), 2):
         print(lista[i])
+
 
 lista = list(range(1, 11))
 wyswietl_co_drugi_element(lista)
