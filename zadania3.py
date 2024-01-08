@@ -7,6 +7,7 @@ Original file is located at
     https://colab.research.google.com/drive/1OVh1kPr_mTGiJnhb6sxOb1kqwpARrgMV
 """
 
+
 class Student:
     def __init__(self, name, marks):
         self.name = name
@@ -15,11 +16,6 @@ class Student:
     def is_passed(self):
         return sum(self.marks) / len(self.marks) > 50
 
-student1 = Student("Dominik", [60, 70, 80])
-student2 = Student("Julia", [40, 30, 20])
-
-print(f"{student1.name} - Passed: {student1.is_passed()}")
-print(f"{student2.name} - Passed: {student2.is_passed()}")
 
 class Library:
     def __init__(self, city, street, zip_code, open_hours, phone):
@@ -30,10 +26,13 @@ class Library:
         self.phone = phone
 
     def __str__(self):
-        return f"Biblioteka: {self.city}, {self.street}, {self.zip_code}, Godziny otwarcia: {self.open_hours}, Telefon: {self.phone}"
+        return (f"Biblioteka: {self.city}, {self.street}, {self.zip_code}, "
+                f"Godziny otwarcia: {self.open_hours}, Telefon: {self.phone}")
+
 
 class Employee:
-    def __init__(self, first_name, last_name, hire_date, birth_date, city, street, zip_code, phone):
+    def __init__(self, first_name, last_name, hire_date,
+                 birth_date, city, street, zip_code, phone):
         self.first_name = first_name
         self.last_name = last_name
         self.hire_date = hire_date
@@ -43,11 +42,18 @@ class Employee:
         self.zip_code = zip_code
         self.phone = phone
 
+    @property
     def __str__(self):
-        return f"Pracownik: {self.first_name} {self.last_name}, Data zatrudnienia: {self.hire_date}, Data urodzenia: {self.birth_date}, Adres: {self.city}, {self.street}, {self.zip_code}, Telefon: {self.phone}"
+        return (f"Pracownik: {self.first_name} {self.last_name}, "
+                f"Data zatrudnienia: {self.hire_date}, "
+                f"Data urodzenia: {self.birth_date}, "
+                f"Adres: {self.city}, {self.street}, {self.zip_code}, "
+                f"Telefon: {self.phone}")
+
 
 class Book:
-    def __init__(self, library, publication_date, author_name, author_surname, number_of_pages):
+    def __init__(self, library, publication_date, author_name,
+                 author_surname, number_of_pages):
         self.library = library
         self.publication_date = publication_date
         self.author_name = author_name
@@ -55,7 +61,12 @@ class Book:
         self.number_of_pages = number_of_pages
 
     def __str__(self):
-        return f"Książka: {self.author_name} {self.author_surname}, Data publikacji: {self.publication_date}, Liczba stron: {self.number_of_pages}, Biblioteka: {self.library}"
+        return (f"Książka: {self.author_name} "
+                f"{self.author_surname}, "
+                f"Data publikacji: {self.publication_date}, "
+                f"Liczba stron: {self.number_of_pages}, "
+                f"Biblioteka: {self.library}")
+
 
 class Order:
     def __init__(self, employee, student, books, order_date):
@@ -66,26 +77,10 @@ class Order:
 
     def __str__(self):
         books_str = ', '.join(str(book) for book in self.books)
-        return f"Zamówienie: Pracownik: {self.employee}, Student: {self.student}, Książki: {books_str}, Data zamówienia: {self.order_date}"
+        return (f"Zamówienie: Pracownik: {self.employee}, "
+                f"Student: {self.student}, "
+                f"Książki: {books_str}, Data zamówienia: {self.order_date}")
 
-
-library1 = Library("Warszawa", "ul. Miła", "00-001", "8:00-16:00", "22-123-45-67")
-library2 = Library("Kraków", "ul. Szeroka", "31-000", "9:00-17:00", "12-345-67-89")
-
-employee1 = Employee("Jan", "Kowalski", "2020-01-01", "1980-05-05", "Warszawa", "ul. Miła", "00-001", "22-123-45-67")
-employee2 = Employee("Anna", "Nowak", "2019-05-01", "1990-07-15", "Kraków", "ul. Szeroka", "31-000", "12-345-67-89")
-
-book1 = Book(library1, "2020-01-01", "Adam", "Mickiewicz", 300)
-book2 = Book(library2, "2019-05-01", "Juliusz", "Słowacki", 250)
-
-student1 = Student("Paweł", [60, 70, 80])
-student2 = Student("Maria", [40, 30, 20])
-
-order1 = Order(employee1, student1, [book1, book2], "2023-01-01")
-order2 = Order(employee2, student2, [book2], "2023-02-01")
-
-print(order1)
-print(order2)
 
 class Property:
     def __init__(self, area, rooms, price, address):
@@ -95,7 +90,10 @@ class Property:
         self.address = address
 
     def __str__(self):
-        return f"Nieruchomość: Powierzchnia: {self.area}, Pokoje: {self.rooms}, Cena: {self.price}, Adres: {self.address}"
+        return (f"Nieruchomość: Powierzchnia: {self.area}, "
+                f"Pokoje: {self.rooms}, "
+                f"Cena: {self.price}, Adres: {self.address}")
+
 
 class House(Property):
     def __init__(self, area, rooms, price, address, plot):
@@ -103,7 +101,8 @@ class House(Property):
         self.plot = plot
 
     def __str__(self):
-        return f"Dom: {super().__str__()}, Rozmiar działki: {self.plot}"
+        return (f"Dom: {super().__str__()}, Rozmiar działki: {self.plot}")
+
 
 class Flat(Property):
     def __init__(self, area, rooms, price, address, floor):
@@ -111,12 +110,4 @@ class Flat(Property):
         self.floor = floor
 
     def __str__(self):
-        return f"Mieszkanie: {super().__str__()}, Piętro: {self.floor}"
-
-
-house = House(120, 4, 300000, "Warszawa, ul. Kwiatowa 10", 500)
-flat = Flat(80, 3, 200000, "Kraków, ul. Słoneczna 5", 2)
-
-
-print(house)
-print(flat)
+        return (f"Mieszkanie: {super().__str__()}, Piętro: {self.floor}")
